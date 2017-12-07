@@ -1,0 +1,6 @@
+framework module Pods_FavoriteAddresses {
+  umbrella header "Pods-FavoriteAddresses-umbrella.h"
+
+  export *
+  module * { export * }
+}

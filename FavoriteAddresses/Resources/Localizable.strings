@@ -1,0 +1,30 @@
+/* 
+  Localizable.strings
+  FavoriteAddresses
+
+  Created by Aleksander Ivanin on 05.12.2017.
+  Copyright © 2017 Aleksander Ivanin. All rights reserved.
+*/
+
+"AddAddress" = "Добавить новый адрес";
+"ShowSavedAddresses" = "Показать сохраненные адреса";
+"SavedAddresses" = "Сохраненные адреса";
+"Confirm" = "Подтвердить";
+"Cancel" = "Отменить";
+"OK" = "OK";
+"Error" = "Ошибка";
+"Save" = "Сохранить адрес";
+"MissedRequiredFields" = "Вы не заполнили обязательные поля";
+
+// MARK: - Address Fields Placeholders
+"NameTitle" = "Название (по желанию)";
+"NamePlaceholder" = "Название адреса";
+"AreaPlaceholder" = "Область";
+"ApartmentPlaceholder" = "Квартира";
+"BlockPlaceholder" = "Квартал";
+"StreetPlaceholder" = "Улица";
+"BuildingPlaceholder" = "Корпус";
+"FloorPlaceholder" = "Этаж";
+"ApartmentNoPlaceholder" = "Номер квартиры";
+"PhonePlaceholder" = "Телефон";
+"SpecialPlaceholder" = "Комментарий";
