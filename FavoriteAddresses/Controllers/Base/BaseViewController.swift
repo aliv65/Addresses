@@ -86,7 +86,7 @@ extension BaseViewController {
 
 // MARK: - Alert support
 extension BaseViewController {
-    func showAlert(title: String?, message: String?, action style: UIAlertActionStyle, with completion: (() -> Void)?) {
+    func showAlertController(title: String?, message: String?, action style: UIAlertActionStyle, with completion: (() -> Void)?) {
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
         let alertAction = UIAlertAction(title: "OK".localized, style: style) { (action) in
             if let completion = completion {
@@ -97,7 +97,11 @@ extension BaseViewController {
         self.present(alertController, animated: true, completion: nil)
     }
     
+    func showAlert(title: String?, message: String?) {
+        self.showAlertController(title: title, message: message, action: .default, with: nil)
+    }
+    
     func showErrorAlert(title: String?, message: String?) {
-        self.showAlert(title: title, message: message, action: .cancel, with: nil)
+        self.showAlertController(title: title, message: message, action: .cancel, with: nil)
     }
 }

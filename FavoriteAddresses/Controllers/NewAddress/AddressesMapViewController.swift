@@ -12,12 +12,13 @@ import Cartography
 
 class AddressesMapViewController: BaseViewController {
     var mapView: MKMapView!
-    var searchBar: UISearchBar!
     var myLocationButton: UIButton!
     var confirmButton: UIButton!
     var addressFieldsView: AddressFieldsView!
     var expandTapRecognizer: UITapGestureRecognizer!
     var setPinTapGestureRecognizer: UITapGestureRecognizer!
+    
+    var resultSearchController: UISearchController? = nil
     
     var animatedConstraintGroup = ConstraintGroup()
     
@@ -28,7 +29,6 @@ class AddressesMapViewController: BaseViewController {
     fileprivate var prevLeftBarButtons: Array<UIBarButtonItem>? = nil
     fileprivate var prevRightBarButtons: Array<UIBarButtonItem>? = nil
     fileprivate var prevTitleView: UIView? = nil
-    fileprivate var searchTimer = Timer()
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         self.locationManager = CLLocationManager()
@@ -46,6 +46,7 @@ class AddressesMapViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.definesPresentationContext = true
         configureSearchButton()
         configureLocationManager()
         setupUI()
@@ -61,13 +62,11 @@ extension AddressesMapViewController {
     func configureSearchButton() {
         let searchItem = UIBarButtonItem(image: #imageLiteral(resourceName: "search"), style: .plain, target: self, action: #selector(searchPressed(_:)))
         self.navigationItem.rightBarButtonItem = searchItem
-        
-        searchBar = UISearchBar()
-        searchBar.tintColor = UIColor.white
-        searchBar.searchBarStyle = .minimal
-        searchBar.showsCancelButton = true
-        searchBar.delegate = self
-        UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).textColor = UIColor.white
+        var attributes = [NSAttributedStringKey.foregroundColor.rawValue: UIColor.black]
+        if #available(iOS 11, *) {
+            attributes = [NSAttributedStringKey.foregroundColor.rawValue: UIColor.white]
+        }
+        UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).defaultTextAttributes = attributes
     }
     
     func configureLocationManager() {
@@ -141,11 +140,7 @@ extension AddressesMapViewController {
         let touchPoint = sender.location(in: self.mapView)
         let touchCoordinate = self.mapView.convert(touchPoint, toCoordinateFrom: self.mapView)
         
-        mapView.removeAnnotation(addressAnnotation)
-        addressAnnotation.coordinate = touchCoordinate
-        mapView.addAnnotation(addressAnnotation)
-        self.focusOnLocation(with: addressAnnotation.coordinate)
-        confirmButton.isHidden = false
+        self.showLocation(at: touchCoordinate)
     }
     
     @objc
@@ -218,27 +213,45 @@ extension AddressesMapViewController {
         prevLeftBarButtons = self.navigationItem.leftBarButtonItems
         prevRightBarButtons = self.navigationItem.rightBarButtonItems
         prevTitleView = self.navigationItem.titleView
-        
+
         self.navigationItem.leftBarButtonItems = nil
         self.navigationItem.rightBarButtonItems = nil
         
-        self.navigationItem.titleView = searchBar
+        let locationSearchTable = LocationSearchTableViewController()
+        locationSearchTable.mapView = mapView
+        locationSearchTable.delegate = self
+        
+        resultSearchController = UISearchController(searchResultsController: locationSearchTable)
+        resultSearchController?.searchResultsUpdater = locationSearchTable
+        resultSearchController?.hidesNavigationBarDuringPresentation = false
+        resultSearchController?.searchBar.placeholder = "SearchPlaceholder".localized
+        resultSearchController?.searchBar.tintColor = UIColor.white
+        resultSearchController?.searchBar.barTintColor = UIColor.white
+        resultSearchController?.searchBar.delegate = self
+        resultSearchController?.searchBar.becomeFirstResponder()
+        resultSearchController?.searchBar.sizeToFit()
+        
         if #available(iOS 11, *) {
-            searchBar.heightAnchor.constraint(equalToConstant: 44.0).isActive = true
+            self.navigationItem.searchController = resultSearchController!
+        } else {
+            self.navigationItem.titleView = resultSearchController?.searchBar
         }
-        searchBar.becomeFirstResponder()
+        self.present(resultSearchController!, animated: true, completion: nil)
     }
     
     func cancelSearch() {
-        searchBar.resignFirstResponder()
-        
         self.navigationItem.leftBarButtonItems = prevLeftBarButtons
         self.navigationItem.rightBarButtonItems = prevRightBarButtons
-        self.navigationItem.titleView = prevTitleView
+        if #available(iOS 11.0, *) {
+            self.navigationItem.searchController = nil
+        } else {
+            self.navigationItem.titleView = prevTitleView
+        }
         
         prevLeftBarButtons = nil
         prevRightBarButtons = nil
-        searchBar.text = ""
+        
+        resultSearchController = nil
     }
     
     func moveToUserLocation() {
@@ -252,6 +265,14 @@ extension AddressesMapViewController {
         let span = MKCoordinateSpanMake(0.005, 0.005)
         let mapRegion = MKCoordinateRegion(center: coordinate, span: span)
         mapView.setRegion(mapRegion, animated: true)
+    }
+    
+    func showLocation(at coordinate: CLLocationCoordinate2D) {
+        mapView.removeAnnotation(addressAnnotation)
+        addressAnnotation.coordinate = coordinate
+        mapView.addAnnotation(addressAnnotation)
+        self.focusOnLocation(with: addressAnnotation.coordinate)
+        confirmButton.isHidden = false
     }
 }
 
@@ -272,7 +293,7 @@ extension AddressesMapViewController : CLLocationManagerDelegate {
     }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-        print("error: \(error)")
+        self.showErrorAlert(title: "Error".localized, message: error.localizedDescription)
     }
 }
 
@@ -293,31 +314,14 @@ extension AddressesMapViewController : MKMapViewDelegate {
 // MARK: - UISearchBarDelegate
 extension AddressesMapViewController : UISearchBarDelegate {
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        searchTimer.invalidate()
         self.cancelSearch()
     }
-    
-    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        searchTimer.invalidate()
-        searchBar.resignFirstResponder()
-    }
-    
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        searchTimer.invalidate()
-        searchTimer = Timer(timeInterval: 0.5, target: self, selector: #selector(doDelaySearch(_:)), userInfo: searchText, repeats: false)
-    }
-    
-    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
-        guard let text = searchBar.text, !text.isEmpty else {
-            searchBar.resignFirstResponder()
-            return
-        }
-    }
-    
-    @objc
-    private func doDelaySearch(_ sender: Timer) {
-        
-        searchTimer.invalidate()
+}
+
+// MARK: - LocationSearchDelegate
+extension AddressesMapViewController : LocationSearchDelegate {
+    func show(placemark: MKPlacemark) {
+        self.showLocation(at: placemark.coordinate)
     }
 }
 
@@ -325,7 +329,11 @@ extension AddressesMapViewController : UISearchBarDelegate {
 extension AddressesMapViewController : AddressFieldsDelegate {
     func save(address: Address) {
         AddressManager.shared.save(address: address) { (success) in
-            
+            if success {
+                self.showAlert(title: "Success".localized, message: "AddressSavedSuccess".localized)
+            } else {
+                self.showErrorAlert(title: "Error".localized, message: "AddressSavedError".localized)
+            }
         }
     }
     

@@ -22,6 +22,7 @@
 
 /* Begin PBXBuildFile section */
 		33FF9D75F83197017368AB35 /* Pods_FavoriteAddresses.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 525F7A5E53585712370D6FF4 /* Pods_FavoriteAddresses.framework */; };
+		CB224F361FD976890070C8D2 /* LocationSearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB224F351FD976890070C8D2 /* LocationSearchTableViewController.swift */; };
 		CB394DAF1FD8397C0081C53B /* AddressesMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB394DAE1FD8397C0081C53B /* AddressesMapViewController.swift */; };
 		CB394DB31FD839BC0081C53B /* SavedAddressesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB394DB21FD839BC0081C53B /* SavedAddressesViewController.swift */; };
 		CB394DB51FD839E60081C53B /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB394DB41FD839E60081C53B /* StartViewController.swift */; };
@@ -54,6 +55,7 @@
 /* Begin PBXFileReference section */
 		525F7A5E53585712370D6FF4 /* Pods_FavoriteAddresses.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FavoriteAddresses.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5517D1CA2011229D732EEA0C /* Pods-FavoriteAddresses.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FavoriteAddresses.release.xcconfig"; path = "Pods/Target Support Files/Pods-FavoriteAddresses/Pods-FavoriteAddresses.release.xcconfig"; sourceTree = "<group>"; };
+		CB224F351FD976890070C8D2 /* LocationSearchTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSearchTableViewController.swift; sourceTree = "<group>"; };
 		CB394DAE1FD8397C0081C53B /* AddressesMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressesMapViewController.swift; sourceTree = "<group>"; };
 		CB394DB21FD839BC0081C53B /* SavedAddressesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedAddressesViewController.swift; sourceTree = "<group>"; };
 		CB394DB41FD839E60081C53B /* StartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
@@ -129,6 +131,7 @@
 			isa = PBXGroup;
 			children = (
 				CB394DAE1FD8397C0081C53B /* AddressesMapViewController.swift */,
+				CB224F351FD976890070C8D2 /* LocationSearchTableViewController.swift */,
 				CBB28B1F1FD91C8E00F162D2 /* Views */,
 			);
 			path = NewAddress;
@@ -451,6 +454,7 @@
 				CB394DB31FD839BC0081C53B /* SavedAddressesViewController.swift in Sources */,
 				CB394DCF1FD851820081C53B /* APIProvider.swift in Sources */,
 				CBE6A34D1FD6C8D90084A481 /* AppDelegate.swift in Sources */,
+				CB224F361FD976890070C8D2 /* LocationSearchTableViewController.swift in Sources */,
 				CBB28B2E1FD962EA00F162D2 /* UITextView+Placeholder.m in Sources */,
 				CB394DAF1FD8397C0081C53B /* AddressesMapViewController.swift in Sources */,
 				CBE6A37C1FD6D8FB0084A481 /* String+Helpers.swift in Sources */,

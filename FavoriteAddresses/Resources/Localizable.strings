@@ -14,17 +14,21 @@
 "OK" = "OK";
 "Error" = "Ошибка";
 "Save" = "Сохранить адрес";
+"Success" = "Успешно";
+"AddressSavedSuccess" = "Адрес успешно сохранен";
+"AddressSavedError" = "Ошибка при сохранении адреса";
 "MissedRequiredFields" = "Вы не заполнили обязательные поля";
 
 // MARK: - Address Fields Placeholders
+"SearchPlaceholder" = "Поиск адреса";
 "NameTitle" = "Название (по желанию)";
 "NamePlaceholder" = "Название адреса";
 "AreaPlaceholder" = "Область";
-"ApartmentPlaceholder" = "Квартира";
+"ApartmentPlaceholder" = "Тип апартаментов";
 "BlockPlaceholder" = "Квартал";
 "StreetPlaceholder" = "Улица";
 "BuildingPlaceholder" = "Корпус";
 "FloorPlaceholder" = "Этаж";
 "ApartmentNoPlaceholder" = "Номер квартиры";
 "PhonePlaceholder" = "Телефон";
-"SpecialPlaceholder" = "Комментарий";
+"SpecialPlaceholder" = "Комментарий (по желанию)";
