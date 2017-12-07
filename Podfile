@@ -8,5 +8,6 @@ target 'FavoriteAddresses' do
   pod 'Alamofire'
   pod 'MagicalRecord'
   pod 'Cartography'
+  pod 'PhoneNumberKit'
 
 end

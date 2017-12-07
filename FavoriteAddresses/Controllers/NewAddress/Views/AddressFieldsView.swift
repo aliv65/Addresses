@@ -77,7 +77,7 @@ protocol AddressFieldsDelegate: class {
 class AddressFieldsView: UIView {
     var dataSource: [AddressFields]
     var savedDataFields: [AddressFields: String]
-    var address: Address!
+    var address: AddressResponseModel = AddressResponseModel()
     
     var tableView: UITableView!
     var saveButton: UIButton!
@@ -85,7 +85,6 @@ class AddressFieldsView: UIView {
     weak var delegate: AddressFieldsDelegate?
     
     init() {
-//        self.address = address
         self.dataSource = AddressFields.fields
         savedDataFields = Dictionary<AddressFields, String>()
         
@@ -104,12 +103,12 @@ class AddressFieldsView: UIView {
             self.delegate?.showError(message: "MissedRequiredFields".localized)
             return
         }
-        self.delegate?.save(address: self.address)
+//        self.delegate?.save(address: self.address)
     }
     
     func validateFields() -> Bool {
         for (field, value) in savedDataFields {
-            if field != .name && value.isTrimmedEmpty {
+            if field != .name && field != .special && value.isTrimmedEmpty {
                 return false
             }
         }
@@ -143,16 +142,20 @@ extension AddressFieldsView: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        var cell: AddressFieldTableViewCell
-        if let reuseCell = tableView.dequeueReusableCell(withIdentifier: AddressFieldTableViewCell.reuseIdeentifier) as? AddressFieldTableViewCell {
-            cell = reuseCell
-        } else {
-            cell = AddressFieldTableViewCell()
-        }
+        let cell = AddressFieldTableViewCell(field: dataSource[indexPath.row])
         cell.delegate = self
-        cell.setAddressField(dataSource[indexPath.row])
         cell.isLast = indexPath.row == dataSource.count - 1
         cell.isScrollable = dataSource[indexPath.row] == .special
+        switch dataSource[indexPath.row] {
+        case .area:
+            cell.setFieldValue(address.area)
+        case .block:
+            cell.setFieldValue(address.block)
+        case .street:
+            cell.setFieldValue(address.street)
+        default:
+            break
+        }
         return cell
     }
     

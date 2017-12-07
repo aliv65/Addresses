@@ -145,39 +145,7 @@ extension AddressesMapViewController {
     
     @objc
     private func confirmAddressPressed(_ sender: UIButton) {
-        self.setLoading(true)
-        APIProvider.shared.addresses(for: addressAnnotation.coordinate.latitude, longitude: addressAnnotation.coordinate.longitude) { [weak self] (address, error) in
-            guard let strongSelf = self else {
-                return
-            }
-            strongSelf.setLoading(false)
-            if let error = error {
-                strongSelf.showErrorAlert(title: "Error".localized, message: error.localizedDescription)
-                return
-            }
-            strongSelf.myLocationButton.alpha = 0
-            strongSelf.confirmButton.alpha = 0
-            UIView.animate(withDuration: 0.375, animations: {
-                constrain(clear: strongSelf.animatedConstraintGroup)
-                strongSelf.animatedConstraintGroup = constrain(strongSelf.view, strongSelf.mapView, strongSelf.addressFieldsView) { (view, map, fields) in
-                    map.top == view.top
-                    map.left == view.left
-                    map.right == view.right
-                    map.bottom == view.top + 109
-                    
-                    fields.top == map.bottom
-                    fields.left == map.left
-                    fields.bottom == view.bottom
-                    fields.right == map.right
-                }
-                strongSelf.view.layoutIfNeeded()
-            }) { (finish) in
-                strongSelf.myLocationButton.isHidden = true
-                strongSelf.confirmButton.isHidden = true
-                strongSelf.mapView.removeGestureRecognizer(strongSelf.setPinTapGestureRecognizer)
-                strongSelf.mapView.addGestureRecognizer(strongSelf.expandTapRecognizer)
-            }
-        }
+        self.confirmAddress()
     }
     
     @objc
@@ -273,6 +241,49 @@ extension AddressesMapViewController {
         mapView.addAnnotation(addressAnnotation)
         self.focusOnLocation(with: addressAnnotation.coordinate)
         confirmButton.isHidden = false
+    }
+    
+    func confirmAddress() {
+        if resultSearchController != nil {
+            self.cancelSearch()
+        }
+        
+        self.setLoading(true)
+        APIProvider.shared.addresses(for: addressAnnotation.coordinate.latitude, longitude: addressAnnotation.coordinate.longitude) { [weak self] (address, error) in
+            guard let strongSelf = self else {
+                return
+            }
+            strongSelf.setLoading(false)
+            if let error = error {
+                strongSelf.showErrorAlert(title: "Error".localized, message: error.localizedDescription)
+                return
+            }
+            if let address = address {
+                strongSelf.addressFieldsView.address = address
+            }
+            strongSelf.myLocationButton.alpha = 0
+            strongSelf.confirmButton.alpha = 0
+            UIView.animate(withDuration: 0.375, animations: {
+                constrain(clear: strongSelf.animatedConstraintGroup)
+                strongSelf.animatedConstraintGroup = constrain(strongSelf.view, strongSelf.mapView, strongSelf.addressFieldsView) { (view, map, fields) in
+                    map.top == view.top
+                    map.left == view.left
+                    map.right == view.right
+                    map.bottom == view.top + 109
+                    
+                    fields.top == map.bottom
+                    fields.left == map.left
+                    fields.bottom == view.bottom
+                    fields.right == map.right
+                }
+                strongSelf.view.layoutIfNeeded()
+            }) { (finish) in
+                strongSelf.myLocationButton.isHidden = true
+                strongSelf.confirmButton.isHidden = true
+                strongSelf.mapView.removeGestureRecognizer(strongSelf.setPinTapGestureRecognizer)
+                strongSelf.mapView.addGestureRecognizer(strongSelf.expandTapRecognizer)
+            }
+        }
     }
 }
 

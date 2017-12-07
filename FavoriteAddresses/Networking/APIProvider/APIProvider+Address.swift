@@ -10,21 +10,33 @@ import Foundation
 import Alamofire
 
 extension APIProvider {
-    func addresses(for latitude: Double, longitude: Double, completion: @escaping (Address?, Error?) -> Void) {
+    func addresses(for latitude: Double, longitude: Double, completion: @escaping (AddressResponseModel?, Error?) -> Void) {
         Alamofire.request(APIRouter.address(latitude, longitude)).responseJSON { (response) in
             print("response: \(response)")
             switch response.result {
             case .success(let responseObject):
-                completion(nil, nil)
+                guard let responseDictionary = responseObject as? Dictionary<String, Any> else {
+                    return
+                }
+                guard let addressDictionary = responseDictionary["address"] as? Dictionary<String, Any> else {
+                    return
+                }
+                let addressResponse = self.parseAddress(from: addressDictionary)
+                completion(addressResponse, nil)
             case .failure(let error):
                 completion(nil, error)
             }
-            
-//            completion(<#Address#>)
         }
     }
     
-    func parseAddress(from dictionary: Dictionary<String, Any>) {
-        
+    func parseAddress(from dictionary: Dictionary<String, Any>) -> AddressResponseModel {
+        let result = AddressResponseModel()
+        result.preview = dictionary["preview"] as? String
+        result.block = dictionary["preview"] as? String
+        result.province = dictionary["province"] as? String
+        result.street = dictionary["street"] as? String
+        result.areaId = dictionary["area_id"] as? Int
+        result.area = dictionary["area"] as? String
+        return result
     }
 }

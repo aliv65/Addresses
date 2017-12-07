@@ -23,6 +23,7 @@
 /* Begin PBXBuildFile section */
 		33FF9D75F83197017368AB35 /* Pods_FavoriteAddresses.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 525F7A5E53585712370D6FF4 /* Pods_FavoriteAddresses.framework */; };
 		CB224F361FD976890070C8D2 /* LocationSearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB224F351FD976890070C8D2 /* LocationSearchTableViewController.swift */; };
+		CB224F381FD99A750070C8D2 /* AddressResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB224F371FD99A750070C8D2 /* AddressResponseModel.swift */; };
 		CB394DAF1FD8397C0081C53B /* AddressesMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB394DAE1FD8397C0081C53B /* AddressesMapViewController.swift */; };
 		CB394DB31FD839BC0081C53B /* SavedAddressesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB394DB21FD839BC0081C53B /* SavedAddressesViewController.swift */; };
 		CB394DB51FD839E60081C53B /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB394DB41FD839E60081C53B /* StartViewController.swift */; };
@@ -56,6 +57,7 @@
 		525F7A5E53585712370D6FF4 /* Pods_FavoriteAddresses.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FavoriteAddresses.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5517D1CA2011229D732EEA0C /* Pods-FavoriteAddresses.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FavoriteAddresses.release.xcconfig"; path = "Pods/Target Support Files/Pods-FavoriteAddresses/Pods-FavoriteAddresses.release.xcconfig"; sourceTree = "<group>"; };
 		CB224F351FD976890070C8D2 /* LocationSearchTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSearchTableViewController.swift; sourceTree = "<group>"; };
+		CB224F371FD99A750070C8D2 /* AddressResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressResponseModel.swift; sourceTree = "<group>"; };
 		CB394DAE1FD8397C0081C53B /* AddressesMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressesMapViewController.swift; sourceTree = "<group>"; };
 		CB394DB21FD839BC0081C53B /* SavedAddressesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedAddressesViewController.swift; sourceTree = "<group>"; };
 		CB394DB41FD839E60081C53B /* StartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
@@ -213,6 +215,7 @@
 			children = (
 				CBE6A36A1FD6CBEE0084A481 /* Private */,
 				CBE6A3691FD6CBEE0084A481 /* Public */,
+				CB224F371FD99A750070C8D2 /* AddressResponseModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -415,12 +418,14 @@
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/Cartography/Cartography.framework",
 				"${BUILT_PRODUCTS_DIR}/MagicalRecord/MagicalRecord.framework",
+				"${BUILT_PRODUCTS_DIR}/PhoneNumberKit/PhoneNumberKit.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Cartography.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MagicalRecord.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PhoneNumberKit.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -460,6 +465,7 @@
 				CBE6A37C1FD6D8FB0084A481 /* String+Helpers.swift in Sources */,
 				CB394DC01FD849C20081C53B /* _Province.swift in Sources */,
 				CB394DB81FD83CD30081C53B /* BaseViewController.swift in Sources */,
+				CB224F381FD99A750070C8D2 /* AddressResponseModel.swift in Sources */,
 				CB394DC51FD849CA0081C53B /* Address.swift in Sources */,
 				CB394DB51FD839E60081C53B /* StartViewController.swift in Sources */,
 				CB394DCB1FD84F9C0081C53B /* AddressManager.swift in Sources */,
