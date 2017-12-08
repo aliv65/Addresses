@@ -29,16 +29,14 @@
 		CB394DB51FD839E60081C53B /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB394DB41FD839E60081C53B /* StartViewController.swift */; };
 		CB394DB81FD83CD30081C53B /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB394DB71FD83CD30081C53B /* BaseViewController.swift */; };
 		CB394DBF1FD849C20081C53B /* _Address.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB394DBC1FD849C20081C53B /* _Address.swift */; };
-		CB394DC01FD849C20081C53B /* _Province.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB394DBD1FD849C20081C53B /* _Province.swift */; };
-		CB394DC11FD849C20081C53B /* _Area.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB394DBE1FD849C20081C53B /* _Area.swift */; };
 		CB394DC51FD849CA0081C53B /* Address.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB394DC21FD849CA0081C53B /* Address.swift */; };
-		CB394DC61FD849CA0081C53B /* Area.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB394DC31FD849CA0081C53B /* Area.swift */; };
-		CB394DC71FD849CA0081C53B /* Province.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB394DC41FD849CA0081C53B /* Province.swift */; };
 		CB394DCB1FD84F9C0081C53B /* AddressManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB394DCA1FD84F9C0081C53B /* AddressManager.swift */; };
 		CB394DCD1FD84FB20081C53B /* APIRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB394DCC1FD84FB20081C53B /* APIRouter.swift */; };
 		CB394DCF1FD851820081C53B /* APIProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB394DCE1FD851820081C53B /* APIProvider.swift */; };
 		CB394DD21FD851D20081C53B /* APIProvider+Address.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB394DD11FD851D20081C53B /* APIProvider+Address.swift */; };
 		CB80452C1FD6E807002F32C4 /* UIButton+FavoriteAddresses.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB80452B1FD6E807002F32C4 /* UIButton+FavoriteAddresses.swift */; };
+		CBA2BF461FDABF7100F3EEE4 /* AreaResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA2BF451FDABF7100F3EEE4 /* AreaResponseModel.swift */; };
+		CBA2BF481FDAC0C600F3EEE4 /* APIProvider+Area.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA2BF471FDAC0C600F3EEE4 /* APIProvider+Area.swift */; };
 		CBB28B211FD91CC100F162D2 /* AddressFieldsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBB28B201FD91CC100F162D2 /* AddressFieldsView.swift */; };
 		CBB28B241FD93C1800F162D2 /* LoaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBB28B231FD93C1800F162D2 /* LoaderView.swift */; };
 		CBB28B261FD9582800F162D2 /* AddressFieldTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBB28B251FD9582800F162D2 /* AddressFieldTableViewCell.swift */; };
@@ -63,16 +61,14 @@
 		CB394DB41FD839E60081C53B /* StartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
 		CB394DB71FD83CD30081C53B /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		CB394DBC1FD849C20081C53B /* _Address.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _Address.swift; sourceTree = "<group>"; };
-		CB394DBD1FD849C20081C53B /* _Province.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _Province.swift; sourceTree = "<group>"; };
-		CB394DBE1FD849C20081C53B /* _Area.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _Area.swift; sourceTree = "<group>"; };
 		CB394DC21FD849CA0081C53B /* Address.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Address.swift; sourceTree = "<group>"; };
-		CB394DC31FD849CA0081C53B /* Area.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Area.swift; sourceTree = "<group>"; };
-		CB394DC41FD849CA0081C53B /* Province.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Province.swift; sourceTree = "<group>"; };
 		CB394DCA1FD84F9C0081C53B /* AddressManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressManager.swift; sourceTree = "<group>"; };
 		CB394DCC1FD84FB20081C53B /* APIRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRouter.swift; sourceTree = "<group>"; };
 		CB394DCE1FD851820081C53B /* APIProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIProvider.swift; sourceTree = "<group>"; };
 		CB394DD11FD851D20081C53B /* APIProvider+Address.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "APIProvider+Address.swift"; sourceTree = "<group>"; };
 		CB80452B1FD6E807002F32C4 /* UIButton+FavoriteAddresses.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+FavoriteAddresses.swift"; sourceTree = "<group>"; };
+		CBA2BF451FDABF7100F3EEE4 /* AreaResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AreaResponseModel.swift; sourceTree = "<group>"; };
+		CBA2BF471FDAC0C600F3EEE4 /* APIProvider+Area.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "APIProvider+Area.swift"; sourceTree = "<group>"; };
 		CBB28B201FD91CC100F162D2 /* AddressFieldsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressFieldsView.swift; sourceTree = "<group>"; };
 		CBB28B231FD93C1800F162D2 /* LoaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoaderView.swift; sourceTree = "<group>"; };
 		CBB28B251FD9582800F162D2 /* AddressFieldTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressFieldTableViewCell.swift; sourceTree = "<group>"; };
@@ -151,6 +147,7 @@
 			isa = PBXGroup;
 			children = (
 				CB394DD11FD851D20081C53B /* APIProvider+Address.swift */,
+				CBA2BF471FDAC0C600F3EEE4 /* APIProvider+Area.swift */,
 			);
 			path = APIProvider;
 			sourceTree = "<group>";
@@ -216,6 +213,7 @@
 				CBE6A36A1FD6CBEE0084A481 /* Private */,
 				CBE6A3691FD6CBEE0084A481 /* Public */,
 				CB224F371FD99A750070C8D2 /* AddressResponseModel.swift */,
+				CBA2BF451FDABF7100F3EEE4 /* AreaResponseModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -224,8 +222,6 @@
 			isa = PBXGroup;
 			children = (
 				CB394DC21FD849CA0081C53B /* Address.swift */,
-				CB394DC31FD849CA0081C53B /* Area.swift */,
-				CB394DC41FD849CA0081C53B /* Province.swift */,
 			);
 			path = Public;
 			sourceTree = "<group>";
@@ -234,8 +230,6 @@
 			isa = PBXGroup;
 			children = (
 				CB394DBC1FD849C20081C53B /* _Address.swift */,
-				CB394DBE1FD849C20081C53B /* _Area.swift */,
-				CB394DBD1FD849C20081C53B /* _Province.swift */,
 			);
 			path = Private;
 			sourceTree = "<group>";
@@ -417,15 +411,19 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-FavoriteAddresses/Pods-FavoriteAddresses-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/Cartography/Cartography.framework",
+				"${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/MagicalRecord/MagicalRecord.framework",
 				"${BUILT_PRODUCTS_DIR}/PhoneNumberKit/PhoneNumberKit.framework",
+				"${BUILT_PRODUCTS_DIR}/SearchTextField/SearchTextField.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Cartography.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManagerSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MagicalRecord.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PhoneNumberKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SearchTextField.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -454,6 +452,7 @@
 			files = (
 				CBE6A3731FD6CE0D0084A481 /* UIColor+FavoritesAddresses.swift in Sources */,
 				CBB28B241FD93C1800F162D2 /* LoaderView.swift in Sources */,
+				CBA2BF481FDAC0C600F3EEE4 /* APIProvider+Area.swift in Sources */,
 				CB394DCD1FD84FB20081C53B /* APIRouter.swift in Sources */,
 				CB394DBF1FD849C20081C53B /* _Address.swift in Sources */,
 				CB394DB31FD839BC0081C53B /* SavedAddressesViewController.swift in Sources */,
@@ -461,9 +460,9 @@
 				CBE6A34D1FD6C8D90084A481 /* AppDelegate.swift in Sources */,
 				CB224F361FD976890070C8D2 /* LocationSearchTableViewController.swift in Sources */,
 				CBB28B2E1FD962EA00F162D2 /* UITextView+Placeholder.m in Sources */,
+				CBA2BF461FDABF7100F3EEE4 /* AreaResponseModel.swift in Sources */,
 				CB394DAF1FD8397C0081C53B /* AddressesMapViewController.swift in Sources */,
 				CBE6A37C1FD6D8FB0084A481 /* String+Helpers.swift in Sources */,
-				CB394DC01FD849C20081C53B /* _Province.swift in Sources */,
 				CB394DB81FD83CD30081C53B /* BaseViewController.swift in Sources */,
 				CB224F381FD99A750070C8D2 /* AddressResponseModel.swift in Sources */,
 				CB394DC51FD849CA0081C53B /* Address.swift in Sources */,
@@ -473,9 +472,6 @@
 				CBE6A3761FD6D72B0084A481 /* BaseNavigationController.swift in Sources */,
 				CB394DD21FD851D20081C53B /* APIProvider+Address.swift in Sources */,
 				CBE6A3551FD6C8D90084A481 /* FavoriteAddresses.xcdatamodeld in Sources */,
-				CB394DC11FD849C20081C53B /* _Area.swift in Sources */,
-				CB394DC71FD849CA0081C53B /* Province.swift in Sources */,
-				CB394DC61FD849CA0081C53B /* Area.swift in Sources */,
 				CB80452C1FD6E807002F32C4 /* UIButton+FavoriteAddresses.swift in Sources */,
 				CBB28B211FD91CC100F162D2 /* AddressFieldsView.swift in Sources */,
 			);

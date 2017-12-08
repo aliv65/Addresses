@@ -18,10 +18,6 @@ public enum AddressAttributes: String {
     case street = "street"
 }
 
-public enum AddressRelationships: String {
-    case area = "area"
-}
-
 open class _Address: NSManagedObject {
 
     // MARK: - Class methods
@@ -81,9 +77,6 @@ open class _Address: NSManagedObject {
     var street: String?
 
     // MARK: - Relationships
-
-    @NSManaged open
-    var area: Area?
 
 }
 

@@ -12,24 +12,8 @@
         <attribute name="lng" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="preview" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="street" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="area" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Area" inverseName="adresses" inverseEntity="Area" syncable="YES"/>
-    </entity>
-    <entity name="Area" representedClassName="Area" syncable="YES">
-        <attribute name="id" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="lat" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="lng" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="adresses" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Address" inverseName="area" inverseEntity="Address" syncable="YES"/>
-        <relationship name="province" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Province" inverseName="areas" inverseEntity="Province" syncable="YES"/>
-    </entity>
-    <entity name="Province" representedClassName="Province" syncable="YES">
-        <attribute name="id" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="areas" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Area" inverseName="province" inverseEntity="Area" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Address" positionX="-171" positionY="-21" width="128" height="223"/>
-        <element name="Area" positionX="7" positionY="63" width="128" height="133"/>
-        <element name="Province" positionX="196" positionY="-9" width="128" height="88"/>
+        <element name="Address" positionX="-171" positionY="-21" width="128" height="210"/>
     </elements>
 </model>

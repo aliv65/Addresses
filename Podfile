@@ -9,5 +9,7 @@ target 'FavoriteAddresses' do
   pod 'MagicalRecord'
   pod 'Cartography'
   pod 'PhoneNumberKit'
+  pod 'SearchTextField'
+  pod 'IQKeyboardManagerSwift'
 
 end
