@@ -1,0 +1,34 @@
+/* 
+  Localizable.strings
+  FavoriteAddresses
+
+  Created by Aleksander Ivanin on 05.12.2017.
+  Copyright © 2017 Aleksander Ivanin. All rights reserved.
+*/
+
+"AddAddress" = "Add new address";
+"ShowSavedAddresses" = "Show saved addresses";
+"SavedAddresses" = "Saved addressed";
+"Confirm" = "Confirm";
+"Cancel" = "Cancel";
+"OK" = "OK";
+"Error" = "Error";
+"Save" = "Save address";
+"Success" = "Success";
+"AddressSavedSuccess" = "Address saved successfully";
+"AddressSavedError" = "Error saving address";
+"MissedRequiredFields" = "You missed the required fields";
+"SearchPlaceholder" = "Address search";
+"NameTitle" = "Address name (optional)";
+"NamePlaceholder" = "Address name";
+"AreaPlaceholder" = "Area";
+"ApartmentPlaceholder" = "Apartment type";
+"BlockPlaceholder" = "Block";
+"StreetPlaceholder" = "Street";
+"BuildingPlaceholder" = "Building";
+"FloorPlaceholder" = "Floor";
+"ApartmentNoPlaceholder" = "Apartment no";
+"PhonePlaceholder" = "Mobile";
+"SpecialPlaceholder" = "Comments (optional)";
+"ParsedModelError" = "Unable to parse address model";
+"NoAddressesAdded" = "You have not added\nany addresses yet";
