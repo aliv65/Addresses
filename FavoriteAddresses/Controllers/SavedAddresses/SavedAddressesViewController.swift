@@ -30,12 +30,21 @@ class SavedAddressesViewController: BaseViewController {
         constrain(self.view, tableView) { (view, table) in
             table.edges == inset(view.edges, 0, 0, 0, 0)
         }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         
-        dataSource = AddressManager.shared.addresses
+        self.reloadData()
     }
     
     override var screenTitle: String? {
         return R.string.localizable.savedAddresses()
+    }
+    
+    func reloadData() {
+        dataSource = AddressManager.shared.addresses
+        tableView.reloadData()
     }
     
     func addAddress() {
@@ -119,6 +128,6 @@ extension SavedAddressesViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 135
+        return dataSource.isEmpty ? 135 : 0
     }
 }
