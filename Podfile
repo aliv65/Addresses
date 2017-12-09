@@ -12,5 +12,6 @@ target 'FavoriteAddresses' do
   pod 'SearchTextField'
   pod 'IQKeyboardManagerSwift'
   pod 'R.swift'
+  pod 'PluggableApplicationDelegate'
 
 end

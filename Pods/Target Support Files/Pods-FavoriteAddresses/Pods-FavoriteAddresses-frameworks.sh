@@ -107,6 +107,7 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/MagicalRecord/MagicalRecord.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/PhoneNumberKit/PhoneNumberKit.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/PluggableApplicationDelegate/PluggableApplicationDelegate.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/R.swift.Library/Rswift.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/SearchTextField/SearchTextField.framework"
 fi
@@ -116,6 +117,7 @@ if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/MagicalRecord/MagicalRecord.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/PhoneNumberKit/PhoneNumberKit.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/PluggableApplicationDelegate/PluggableApplicationDelegate.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/R.swift.Library/Rswift.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/SearchTextField/SearchTextField.framework"
 fi

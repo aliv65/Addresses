@@ -50,6 +50,8 @@
 		CBE6A3791FD6D87A0084A481 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = CBE6A3781FD6D87A0084A481 /* Localizable.strings */; };
 		CBE6A37C1FD6D8FB0084A481 /* String+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE6A37B1FD6D8FB0084A481 /* String+Helpers.swift */; };
 		CBF643871FDBF3830049C662 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBF643861FDBF3830049C662 /* R.generated.swift */; };
+		CBF6438A1FDBFDEC0049C662 /* PersistensСonfigurationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBF643891FDBFDEC0049C662 /* PersistensСonfigurationService.swift */; };
+		CBF6438C1FDBFEAE0049C662 /* ApplicationAppearanceService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBF6438B1FDBFEAE0049C662 /* ApplicationAppearanceService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -87,6 +89,8 @@
 		CBE6A3781FD6D87A0084A481 /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		CBE6A37B1FD6D8FB0084A481 /* String+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Helpers.swift"; sourceTree = "<group>"; };
 		CBF643861FDBF3830049C662 /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = SOURCE_ROOT; };
+		CBF643891FDBFDEC0049C662 /* PersistensСonfigurationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PersistensСonfigurationService.swift"; sourceTree = "<group>"; };
+		CBF6438B1FDBFEAE0049C662 /* ApplicationAppearanceService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationAppearanceService.swift; sourceTree = "<group>"; };
 		FC354F87A4F9B30578B6F14F /* Pods-FavoriteAddresses.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FavoriteAddresses.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FavoriteAddresses/Pods-FavoriteAddresses.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -199,6 +203,7 @@
 				CBE6A37A1FD6D8B00084A481 /* Utils */,
 				CBE6A36F1FD6CDC60084A481 /* Style */,
 				CBE6A3771FD6D84A0084A481 /* Resources */,
+				CBF643881FDBFD430049C662 /* Services */,
 				CBE6A34C1FD6C8D90084A481 /* AppDelegate.swift */,
 				CBE6A3561FD6C8D90084A481 /* Assets.xcassets */,
 				CBE6A3581FD6C8D90084A481 /* LaunchScreen.storyboard */,
@@ -293,6 +298,15 @@
 				CBE6A37B1FD6D8FB0084A481 /* String+Helpers.swift */,
 			);
 			path = Utils;
+			sourceTree = "<group>";
+		};
+		CBF643881FDBFD430049C662 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				CBF643891FDBFDEC0049C662 /* PersistensСonfigurationService.swift */,
+				CBF6438B1FDBFEAE0049C662 /* ApplicationAppearanceService.swift */,
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -418,6 +432,7 @@
 				"${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/MagicalRecord/MagicalRecord.framework",
 				"${BUILT_PRODUCTS_DIR}/PhoneNumberKit/PhoneNumberKit.framework",
+				"${BUILT_PRODUCTS_DIR}/PluggableApplicationDelegate/PluggableApplicationDelegate.framework",
 				"${BUILT_PRODUCTS_DIR}/R.swift.Library/Rswift.framework",
 				"${BUILT_PRODUCTS_DIR}/SearchTextField/SearchTextField.framework",
 			);
@@ -428,6 +443,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManagerSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MagicalRecord.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PhoneNumberKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PluggableApplicationDelegate.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Rswift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SearchTextField.framework",
 			);
@@ -480,9 +496,11 @@
 				CBE6A34D1FD6C8D90084A481 /* AppDelegate.swift in Sources */,
 				CB224F361FD976890070C8D2 /* LocationSearchTableViewController.swift in Sources */,
 				CBB28B2E1FD962EA00F162D2 /* UITextView+Placeholder.m in Sources */,
+				CBF6438C1FDBFEAE0049C662 /* ApplicationAppearanceService.swift in Sources */,
 				CBA2BF461FDABF7100F3EEE4 /* AreaResponseModel.swift in Sources */,
 				CB394DAF1FD8397C0081C53B /* AddressesMapViewController.swift in Sources */,
 				CBE6A37C1FD6D8FB0084A481 /* String+Helpers.swift in Sources */,
+				CBF6438A1FDBFDEC0049C662 /* PersistensСonfigurationService.swift in Sources */,
 				CB394DB81FD83CD30081C53B /* BaseViewController.swift in Sources */,
 				CB224F381FD99A750070C8D2 /* AddressResponseModel.swift in Sources */,
 				CB394DC51FD849CA0081C53B /* Address.swift in Sources */,
