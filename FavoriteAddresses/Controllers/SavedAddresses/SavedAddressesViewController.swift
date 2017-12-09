@@ -11,6 +11,7 @@ import Cartography
 
 class SavedAddressesViewController: BaseViewController {
     var tableView: UITableView!
+    var dataSource: [Address] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,6 +27,8 @@ class SavedAddressesViewController: BaseViewController {
         constrain(self.view, tableView) { (view, table) in
             table.edges == inset(view.edges, 0, 0, 0, 0)
         }
+        
+        dataSource = AddressManager.shared.addresses
     }
     
     override var screenTitle: String? {
@@ -36,12 +39,17 @@ class SavedAddressesViewController: BaseViewController {
 // MARK: - UITableViewDataSource
 extension SavedAddressesViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return dataSource.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell(style: .default, reuseIdentifier: "AddressCell")
-        
+        let cell = UITableViewCell(style: .subtitle, reuseIdentifier: "AddressCell")
+        if let label = dataSource[indexPath.row].label, !label.isTrimmedEmpty {
+            cell.textLabel?.text = label
+            cell.detailTextLabel?.text = dataSource[indexPath.row].preview
+        } else {
+            cell.textLabel?.text = dataSource[indexPath.row].preview
+        }
         return cell
     }
 }

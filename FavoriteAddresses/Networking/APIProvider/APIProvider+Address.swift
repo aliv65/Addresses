@@ -21,22 +21,11 @@ extension APIProvider {
                 guard let addressDictionary = responseDictionary["address"] as? Dictionary<String, Any> else {
                     return
                 }
-                let addressResponse = self.parseAddress(from: addressDictionary)
+                let addressResponse = AddressResponseModel(with: addressDictionary)
                 completion(addressResponse, nil)
             case .failure(let error):
                 completion(nil, error)
             }
         }
-    }
-    
-    func parseAddress(from dictionary: Dictionary<String, Any>) -> AddressResponseModel {
-        let result = AddressResponseModel()
-        result.preview = dictionary["preview"] as? String
-        result.block = dictionary["preview"] as? String
-        result.province = dictionary["province"] as? String
-        result.street = dictionary["street"] as? String
-        result.areaId = dictionary["area_id"] as? Int
-        result.area = dictionary["area"] as? String
-        return result
     }
 }

@@ -79,6 +79,15 @@ class AddressFieldTableViewCell: UITableViewCell {
     }
     
     func setFieldValue(_ value: String?) {
+        if field == .phone {
+            let phoneNumberKit = PhoneNumberKit()
+            do {
+                let phoneNumber = try phoneNumberKit.parse(value ?? "")
+                self.value = phoneNumber.numberString
+            } catch {
+                print("Generic parser error")
+            }
+        }
         self.value = value
     }
 }
@@ -126,9 +135,9 @@ extension AddressFieldTableViewCell {
                     } as (() -> Void)
             } else {
                 addressField = UITextField()
-                addressField.delegate = self
-                addressField.font = UIFont.systemFont(ofSize: 15)
             }
+            addressField.delegate = self
+            addressField.font = UIFont.systemFont(ofSize: 15)
             contentView.addSubview(addressField)
             
             constrain(self.contentView, addressField) { (content, field) in
@@ -198,8 +207,13 @@ extension AddressFieldTableViewCell : UITextFieldDelegate {
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
-        if let text = textField.text, text.trimmingCharacters(in: CharacterSet.alphanumerics).isTrimmedEmpty && !text.isTrimmedEmpty {
-            self.delegate?.update(field: field, with: text)
+        guard let text = textField.text else {
+            return
+        }
+        let stringArray = text.components(separatedBy: CharacterSet.alphanumerics.inverted)
+        let resultString = stringArray.joined(separator: "")
+        if !resultString.isTrimmedEmpty {
+            self.delegate?.update(field: field, with: resultString)
         }
     }
 }

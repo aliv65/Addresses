@@ -150,28 +150,7 @@ extension AddressesMapViewController {
     
     @objc
     private func expandMapView(_ sender: UITapGestureRecognizer) {
-        UIView.animate(withDuration: 0.375, animations: {
-            self.myLocationButton.alpha = 1
-            self.confirmButton.alpha = 1
-            constrain(clear: self.animatedConstraintGroup)
-            self.animatedConstraintGroup = constrain(self.view, self.mapView, self.addressFieldsView) { (view, map, fields) in
-                map.top == view.top
-                map.left == view.left
-                map.right == view.right
-                map.bottom == view.bottom
-                
-                fields.top == map.bottom
-                fields.left == map.left
-                fields.bottom == view.bottom
-                fields.right == map.right
-            }
-            self.view.layoutIfNeeded()
-        }) { (finish) in
-            self.myLocationButton.isHidden = false
-            self.confirmButton.isHidden = false
-            self.mapView.removeGestureRecognizer(self.expandTapRecognizer)
-            self.mapView.addGestureRecognizer(self.setPinTapGestureRecognizer)
-        }
+        self.expandMapView()
     }
 }
 
@@ -259,7 +238,7 @@ extension AddressesMapViewController {
                 return
             }
             if let address = address {
-                strongSelf.addressFieldsView.address = address
+                strongSelf.addressFieldsView.savedDataFields = address.toDictionary()
             }
             strongSelf.myLocationButton.alpha = 0
             strongSelf.confirmButton.alpha = 0
@@ -283,6 +262,31 @@ extension AddressesMapViewController {
                 strongSelf.mapView.removeGestureRecognizer(strongSelf.setPinTapGestureRecognizer)
                 strongSelf.mapView.addGestureRecognizer(strongSelf.expandTapRecognizer)
             }
+        }
+    }
+    
+    func expandMapView() {
+        UIView.animate(withDuration: 0.375, animations: {
+            self.myLocationButton.alpha = 1
+            self.confirmButton.alpha = 1
+            constrain(clear: self.animatedConstraintGroup)
+            self.animatedConstraintGroup = constrain(self.view, self.mapView, self.addressFieldsView) { (view, map, fields) in
+                map.top == view.top
+                map.left == view.left
+                map.right == view.right
+                map.bottom == view.bottom
+                
+                fields.top == map.bottom
+                fields.left == map.left
+                fields.bottom == view.bottom
+                fields.right == map.right
+            }
+            self.view.layoutIfNeeded()
+        }) { (finish) in
+            self.myLocationButton.isHidden = false
+            self.confirmButton.isHidden = false
+            self.mapView.removeGestureRecognizer(self.expandTapRecognizer)
+            self.mapView.addGestureRecognizer(self.setPinTapGestureRecognizer)
         }
     }
 }
@@ -338,10 +342,12 @@ extension AddressesMapViewController : LocationSearchDelegate {
 
 // MARK: - AddressFieldsDelegate
 extension AddressesMapViewController : AddressFieldsDelegate {
-    func save(address: Address) {
-        AddressManager.shared.save(address: address) { (success) in
+    func save(model: AddressResponseModel) {
+        AddressManager.shared.save(with: model) { (success) in
             if success {
-                self.showAlert(title: "Success".localized, message: "AddressSavedSuccess".localized)
+                self.showAlertController(title: "Success".localized, message: "AddressSavedSuccess".localized, action: .default) {
+                    self.expandMapView()
+                }
             } else {
                 self.showErrorAlert(title: "Error".localized, message: "AddressSavedError".localized)
             }

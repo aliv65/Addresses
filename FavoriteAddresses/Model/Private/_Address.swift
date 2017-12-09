@@ -5,16 +5,22 @@ import Foundation
 import CoreData
 
 public enum AddressAttributes: String {
+    case apartment = "apartment"
+    case apartmentNo = "apartmentNo"
+    case area = "area"
     case areaId = "areaId"
     case avenue = "avenue"
     case block = "block"
     case building = "building"
+    case floor = "floor"
     case id = "id"
     case instructions = "instructions"
     case label = "label"
     case lat = "lat"
     case lng = "lng"
+    case phone = "phone"
     case preview = "preview"
+    case province = "province"
     case street = "street"
 }
 
@@ -44,6 +50,15 @@ open class _Address: NSManagedObject {
     // MARK: - Properties
 
     @NSManaged open
+    var apartment: String?
+
+    @NSManaged open
+    var apartmentNo: String?
+
+    @NSManaged open
+    var area: String?
+
+    @NSManaged open
     var areaId: NSNumber?
 
     @NSManaged open
@@ -54,6 +69,9 @@ open class _Address: NSManagedObject {
 
     @NSManaged open
     var building: String?
+
+    @NSManaged open
+    var floor: NSNumber?
 
     @NSManaged open
     var id: NSNumber?
@@ -71,7 +89,13 @@ open class _Address: NSManagedObject {
     var lng: NSNumber?
 
     @NSManaged open
+    var phone: String?
+
+    @NSManaged open
     var preview: String?
+
+    @NSManaged open
+    var province: String?
 
     @NSManaged open
     var street: String?

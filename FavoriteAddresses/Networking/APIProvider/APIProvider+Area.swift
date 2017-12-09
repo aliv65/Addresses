@@ -31,10 +31,4 @@ extension APIProvider {
             }
         }
     }
-    
-    func parseArea(from dictionary: Dictionary<String, Any>) -> AddressResponseModel {
-        let result = AddressResponseModel()
-        
-        return result
-    }
 }

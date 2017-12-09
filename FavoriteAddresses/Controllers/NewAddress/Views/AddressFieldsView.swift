@@ -9,17 +9,17 @@
 import UIKit
 import Cartography
 
-enum AddressFields {
-    case name
+enum AddressFields: String {
+    case name = "label"
     case area
     case apartment
     case block
     case street
     case building
     case floor
-    case apartmentNo
+    case apartmentNo = "apartment_no"
     case phone
-    case special
+    case special = "location_instructions"
     
     var placeholder: String {
         switch self {
@@ -70,14 +70,13 @@ enum AddressFields {
 }
 
 protocol AddressFieldsDelegate: class {
-    func save(address: Address)
+    func save(model: AddressResponseModel)
     func showError(message: String)
 }
 
 class AddressFieldsView: UIView {
     var dataSource: [AddressFields]
-    var savedDataFields: [AddressFields: String]
-    var address: AddressResponseModel = AddressResponseModel()
+    var savedDataFields: [String: String] = [:]
     
     var tableView: UITableView!
     var saveButton: UIButton!
@@ -86,7 +85,6 @@ class AddressFieldsView: UIView {
     
     init() {
         self.dataSource = AddressFields.fields
-        savedDataFields = Dictionary<AddressFields, String>()
         
         super.init(frame: CGRect.zero)
         
@@ -103,11 +101,13 @@ class AddressFieldsView: UIView {
             self.delegate?.showError(message: "MissedRequiredFields".localized)
             return
         }
-//        self.delegate?.save(address: self.address)
+        let addressResponseModel = AddressResponseModel(with: savedDataFields)
+        self.delegate?.save(model: addressResponseModel)
     }
     
     func validateFields() -> Bool {
         for (field, value) in savedDataFields {
+            let field = AddressFields(rawValue: field)
             if field != .name && field != .special && value.isTrimmedEmpty {
                 return false
             }
@@ -146,16 +146,7 @@ extension AddressFieldsView: UITableViewDataSource {
         cell.delegate = self
         cell.isLast = indexPath.row == dataSource.count - 1
         cell.isScrollable = dataSource[indexPath.row] == .special
-        switch dataSource[indexPath.row] {
-        case .area:
-            cell.setFieldValue(address.area)
-        case .block:
-            cell.setFieldValue(address.block)
-        case .street:
-            cell.setFieldValue(address.street)
-        default:
-            break
-        }
+        cell.setFieldValue(savedDataFields[dataSource[indexPath.row].rawValue])
         return cell
     }
     
@@ -202,6 +193,6 @@ extension AddressFieldsView: UITableViewDelegate {
 // MARK: - AddressFieldTableViewCellDelegate
 extension AddressFieldsView : AddressFieldTableViewCellDelegate {
     func update(field: AddressFields, with value: String) {
-        savedDataFields[field] = value
+        savedDataFields[field.rawValue] = value
     }
 }

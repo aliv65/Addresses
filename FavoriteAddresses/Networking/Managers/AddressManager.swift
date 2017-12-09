@@ -13,18 +13,23 @@ class AddressManager {
     static let shared = AddressManager()
     
     var addresses: [Address] {
-        return []
+        guard let addresses = Address.mr_findAll() as? [Address] else {
+            return []
+        }
+        return addresses
     }
     
     var hasAddresses: Bool {
         return !addresses.isEmpty
     }
     
-    func getAddress(for latitude: Double, longitude: Double,completion: @escaping ([Address]) -> Void) {
-        
-    }
-    
-    func save(address: Address, completion: @escaping (Bool) -> Void) {
-        
+    func save(with model: AddressResponseModel, completion: @escaping (Bool) -> Void) {
+        MagicalRecord.save({ (localContext) in
+            guard let _ = Address.address(with: model, in: localContext) else {
+                return
+            }
+        }) { (success, error) in
+            completion(success)
+        }
     }
 }
