@@ -8,22 +8,18 @@
 
 import Foundation
 import Alamofire
+import AlamofireObjectMapper
 
 extension APIProvider {
     func areas(completion: @escaping ([AreaResponseModel]?, Error?) -> Void) {
-        Alamofire.request(APIRouter.areas).responseJSON { (response) in
+        Alamofire.request(APIRouter.areas).responseObject { (response: DataResponse<BaseAreaResponseModel>) in
             print("response: \(response)")
             switch response.result {
-            case .success(let responseObject):
-                guard let responseDictionary = responseObject as? Dictionary<String, Any> else {
-                    return
-                }
-                guard let areasArray = responseDictionary["areas"] as? [Dictionary<String, Any>] else {
-                    return
-                }
-                var areas = [AreaResponseModel]()
-                for areaDictionary in areasArray {
-                    areas.append(AreaResponseModel(with: areaDictionary))
+            case .success(_):
+                guard let baseAreaResponse = response.result.value,
+                    let areas = baseAreaResponse.areas else {
+                        completion(nil, nil)
+                        return
                 }
                 completion(areas, nil)
             case .failure(let error):

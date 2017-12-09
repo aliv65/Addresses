@@ -7,32 +7,67 @@
 //
 
 import Foundation
+import ObjectMapper
 
-class ProvinceResponseModel {
-    var id: Int
-    var name: String
+class BaseAreaResponseModel: Mappable {
+    var areas: [AreaResponseModel]?
     
-    init?(with dictionary: Dictionary<String, Any>?) {
-        guard let dictionary = dictionary else {
-            return nil
-        }
-        self.id = dictionary["id"] as? Int ?? 0
-        self.name = dictionary["name"] as? String ?? ""
+    init() { }
+    
+    required init?(map: Map) { }
+    
+    func mapping(map: Map) {
+        areas <- map["areas"]
     }
 }
 
-class AreaResponseModel {
-    var id: Int
-    var name: String
-    var lat: Double
-    var lng: Double
+class AreaResponseModel: Mappable {
+    private var id: Int?
+    private var name: String?
+    private var lat: Double?
+    private var lng: Double?
     var province: ProvinceResponseModel?
     
-    init(with dictionary: Dictionary<String, Any>) {
-        self.id = dictionary["id"] as? Int ?? 0
-        self.name = dictionary["name"] as? String ?? ""
-        self.lat = dictionary["lat"] as? Double ?? 0.0
-        self.lng = dictionary["lng"] as? Double ?? 0.0
-        self.province = ProvinceResponseModel(with: dictionary["province"] as? Dictionary<String, Any>)
+    init() { }
+    
+    required init?(map: Map) { }
+    
+    func mapping(map: Map) {
+        id          <- map["id"]
+        name        <- map["name"]
+        lat         <- map["lat"]
+        lng         <- map["lng"]
+        province    <- map["province"]
+    }
+    
+    var areaName: String {
+        return name ?? ""
+    }
+    
+    var areaLatitude: Double {
+        return lat ?? 0.0
+    }
+    
+    var areaLongitude: Double {
+        return lng ?? 0.0
     }
 }
+
+class ProvinceResponseModel: Mappable {
+    private var id: Int?
+    private var name: String?
+    
+    init() { }
+    
+    required init?(map: Map) { }
+    
+    func mapping(map: Map) {
+        id          <- map["id"]
+        name        <- map["name"]
+    }
+    
+    var provinceName: String {
+        return name ?? ""
+    }
+}
+

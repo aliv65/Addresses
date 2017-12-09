@@ -176,7 +176,7 @@ extension AddressFieldTableViewCell {
             if let areas = areas {
                 var results = [SearchTextFieldItem]()
                 for area in areas {
-                    results.append(SearchTextFieldItem(title: area.name, subtitle: area.province?.name, image: nil))
+                    results.append(SearchTextFieldItem(title: area.areaName, subtitle: area.province?.provinceName, image: nil))
                 }
                 DispatchQueue.main.async {
                     callback(results)

@@ -10,19 +10,19 @@ open class Address: _Address {
     }
     
     func update(with model: AddressResponseModel) {
-        self.label = model.name
-        self.area = model.area
-        self.areaId = NSNumber(value: model.areaId)
-        self.apartment = model.apartment
-        self.apartmentNo = model.apartmentNo
-        self.block = model.block
-        self.street = model.street
-        self.floor = NSNumber(value: model.floor)
-        self.phone = model.phone
-        self.instructions = model.instructions
-        self.preview = model.preview
-        self.province = model.province
-        self.lat = NSNumber(value: model.lat)
-        self.lng = NSNumber(value: model.lng)
+        self.label = model.addressName
+        self.area = model.addressArea
+        self.areaId = NSNumber(value: model.addressAreaId)
+        self.apartment = model.addressApartment
+        self.apartmentNo = model.addressApartmentNo
+        self.block = model.addressBlock
+        self.street = model.addressStreet
+        self.floor = NSNumber(value: model.addressFloor)
+        self.phone = model.addressPhone
+        self.instructions = model.addressInstructions
+        self.preview = model.addressPreview
+        self.province = model.addressProvince
+        self.lat = NSNumber(value: model.addressLatitude)
+        self.lng = NSNumber(value: model.addressLongitude)
     }
 }

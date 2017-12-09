@@ -13,5 +13,6 @@ target 'FavoriteAddresses' do
   pod 'IQKeyboardManagerSwift'
   pod 'R.swift'
   pod 'PluggableApplicationDelegate'
+  pod 'AlamofireObjectMapper'
 
 end

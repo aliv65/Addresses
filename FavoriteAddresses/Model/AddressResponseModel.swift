@@ -7,54 +7,126 @@
 //
 
 import Foundation
+import ObjectMapper
 
-class AddressResponseModel {
-    var name: String
-    var areaId: Int
-    var area: String
-    var apartment: String
-    var apartmentNo: String
-    var block: String
-    var street: String
-    var floor: Int
-    var phone: String
-    var instructions: String
-    var preview: String
-    var province: String
-    var lat: Double
-    var lng: Double
+class BaseAddressResponseModel: Mappable {
+    var address: AddressResponseModel?
     
+    init() { }
+    
+    required init?(map: Map) { }
+    
+    func mapping(map: Map) {
+        address <- map["address"]
+    }
+}
 
-    init(with dictionary: Dictionary<String, Any>) {
-        self.name = dictionary["label"] as? String ?? ""
-        self.areaId = dictionary["area_id"] as? Int ?? 0
-        self.area = dictionary["area"] as? String ?? ""
-        self.apartment = dictionary["apartment"] as? String ?? ""
-        self.block = dictionary["block"] as? String ?? ""
-        self.street = dictionary["street"] as? String ?? ""
-        self.floor = dictionary["floor"] as? Int ?? 0
-        self.apartmentNo = dictionary["apartment_no"] as? String ?? ""
-        self.phone = dictionary["phone"] as? String ?? ""
-        self.instructions = dictionary["location_instructions"] as? String ?? ""
-        self.lat = dictionary["lat"] as? Double ?? 0.0
-        self.lng = dictionary["lng"] as? Double ?? 0.0
-        self.preview = dictionary["preview"] as? String ?? ""
-        self.province = dictionary["province"] as? String ?? ""
+class AddressResponseModel: Mappable {
+    private var name: String?
+    private var areaId: Int?
+    private var area: String?
+    private var apartment: String?
+    private var apartmentNo: String?
+    private var block: String?
+    private var street: String?
+    private var floor: Int?
+    private var phone: String?
+    private var instructions: String?
+    private var preview: String?
+    private var province: String?
+    private var lat: Double?
+    private var lng: Double?
+    
+    init() { }
+    
+    required init?(map: Map) { }
+    
+    func mapping(map: Map) {
+        name            <- map["label"]
+        areaId          <- map["area_id"]
+        area            <- map["area"]
+        apartment       <- map["apartment"]
+        apartmentNo     <- map["apartment_no"]
+        block           <- map["block"]
+        street          <- map["street"]
+        floor           <- map["floor"]
+        phone           <- map["phone"]
+        instructions    <- map["location_instructions"]
+        lat             <- map["lat"]
+        lng             <- map["lng"]
+        preview         <- map["preview"]
+        province        <- map["province"]
     }
     
     func toDictionary() -> [String: String] {
         var result = [String: String]()
-        result["label"] = self.name
-        result["area"] = self.area
-        result["apartment"] = self.apartment
-        result["block"] = self.block
-        result["street"] = self.street
-        result["floor"] = self.floor == 0 ? "" : "\(self.floor)"
-        result["apartment_no"] = self.apartmentNo
-        result["phone"] = self.phone
-        result["location_instructions"] = self.instructions
-        result["preview"] = self.preview
-        result["province"] = self.province
+        result["label"] = self.addressName
+        result["area"] = self.addressArea
+        result["apartment"] = self.addressApartment
+        result["apartment_no"] = self.addressApartmentNo
+        result["block"] = self.addressBlock
+        result["street"] = self.addressStreet
+        result["floor"] = self.addressFloor == 0 ? "" : "\(self.addressFloor)"
+        result["phone"] = self.addressPhone
+        result["location_instructions"] = self.addressInstructions
+        result["preview"] = self.addressPreview
+        result["province"] = self.addressProvince
         return result
+    }
+    
+    var addressName: String {
+        return name ?? ""
+    }
+    
+    var addressArea: String {
+        return area ?? ""
+    }
+    
+    var addressApartment: String {
+        return apartment ?? ""
+    }
+    
+    var addressApartmentNo: String {
+        return apartmentNo ?? ""
+    }
+    
+    var addressBlock: String {
+        return block ?? ""
+    }
+    
+    var addressStreet: String {
+        return street ?? ""
+    }
+    
+    var addressFloor: Int {
+        return floor ?? 0
+    }
+    
+    var addressPhone: String {
+        return phone ?? ""
+    }
+    
+    var addressInstructions: String {
+        return instructions ?? ""
+    }
+    
+    var addressPreview: String {
+        return preview ?? ""
+    }
+    
+    var addressProvince: String {
+        return province ?? ""
+    }
+    
+    var addressAreaId: Int {
+        return areaId ?? 0
+    }
+    
+    var addressLatitude: Double {
+        return lat ?? 0.0
+    }
+    
+    var addressLongitude: Double {
+        return lng ?? 0.0
     }
 }

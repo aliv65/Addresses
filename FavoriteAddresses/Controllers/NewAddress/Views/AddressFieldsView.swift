@@ -101,7 +101,10 @@ class AddressFieldsView: UIView {
             self.delegate?.showError(message: R.string.localizable.missedRequiredFields())
             return
         }
-        let addressResponseModel = AddressResponseModel(with: savedDataFields)
+        guard let addressResponseModel = AddressResponseModel(JSON: savedDataFields) else {
+            self.delegate?.showError(message: R.string.localizable.parsedModelError())
+            return
+        }
         self.delegate?.save(model: addressResponseModel)
     }
     

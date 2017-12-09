@@ -8,20 +8,19 @@
 
 import Foundation
 import Alamofire
+import AlamofireObjectMapper
 
 extension APIProvider {
     func addresses(for latitude: Double, longitude: Double, completion: @escaping (AddressResponseModel?, Error?) -> Void) {
-        Alamofire.request(APIRouter.address(latitude, longitude)).responseJSON { (response) in
+        Alamofire.request(APIRouter.address(latitude, longitude)).responseObject { (response: DataResponse<BaseAddressResponseModel>) in
             print("response: \(response)")
             switch response.result {
-            case .success(let responseObject):
-                guard let responseDictionary = responseObject as? Dictionary<String, Any> else {
+            case .success(_):
+                guard let baseAddressResponse = response.result.value,
+                    let addressResponse = baseAddressResponse.address else {
+                    completion(nil, nil)
                     return
                 }
-                guard let addressDictionary = responseDictionary["address"] as? Dictionary<String, Any> else {
-                    return
-                }
-                let addressResponse = AddressResponseModel(with: addressDictionary)
                 completion(addressResponse, nil)
             case .failure(let error):
                 completion(nil, error)

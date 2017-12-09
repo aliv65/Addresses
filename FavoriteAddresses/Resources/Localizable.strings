@@ -30,3 +30,4 @@
 "ApartmentNoPlaceholder" = "Номер квартиры";
 "PhonePlaceholder" = "Телефон";
 "SpecialPlaceholder" = "Комментарий (по желанию)";
+"ParsedModelError" = "НЕвозможно преобразовать модель адреса";
