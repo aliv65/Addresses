@@ -203,6 +203,7 @@ extension AddressesMapViewController {
     
     func moveToUserLocation() {
         guard let userLocation = locationManager.location else {
+            self.showError(message: "Unable to find user location")
             return
         }
         self.focusOnLocation(with: userLocation.coordinate)
