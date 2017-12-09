@@ -18,7 +18,7 @@ final class ApplicationAppearanceService: NSObject, ApplicationService {
         IQKeyboardManager.sharedManager().enable = true
         
         window = UIWindow(frame: UIScreen.main.bounds)
-        window?.rootViewController = BaseNavigationController(rootViewController: StartViewController())
+        window?.rootViewController = BaseNavigationController(rootViewController: SavedAddressesViewController())
         window?.makeKeyAndVisible()
         
         return true
