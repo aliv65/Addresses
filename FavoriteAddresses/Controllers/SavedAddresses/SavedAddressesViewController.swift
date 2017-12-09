@@ -32,7 +32,7 @@ class SavedAddressesViewController: BaseViewController {
     }
     
     override var screenTitle: String? {
-        return "SavedAddresses".localized
+        return R.string.localizable.savedAddresses()
     }
 }
 

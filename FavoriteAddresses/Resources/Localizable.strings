@@ -18,8 +18,6 @@
 "AddressSavedSuccess" = "Адрес успешно сохранен";
 "AddressSavedError" = "Ошибка при сохранении адреса";
 "MissedRequiredFields" = "Вы не заполнили обязательные поля";
-
-// MARK: - Address Fields Placeholders
 "SearchPlaceholder" = "Поиск адреса";
 "NameTitle" = "Название (по желанию)";
 "NamePlaceholder" = "Название адреса";

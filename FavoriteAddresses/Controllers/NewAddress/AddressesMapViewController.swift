@@ -53,14 +53,14 @@ class AddressesMapViewController: BaseViewController {
     }
     
     override var screenTitle: String? {
-        return "AddAddress".localized
+        return R.string.localizable.addAddress()
     }
 }
 
 // MARK: - Конфигурация интерфейса и копмонентов контроллера
 extension AddressesMapViewController {
     func configureSearchButton() {
-        let searchItem = UIBarButtonItem(image: #imageLiteral(resourceName: "search"), style: .plain, target: self, action: #selector(searchPressed(_:)))
+        let searchItem = UIBarButtonItem(image: R.image.search(), style: .plain, target: self, action: #selector(searchPressed(_:)))
         self.navigationItem.rightBarButtonItem = searchItem
         var attributes = [NSAttributedStringKey.foregroundColor.rawValue: UIColor.black]
         if #available(iOS 11, *) {
@@ -102,12 +102,12 @@ extension AddressesMapViewController {
         self.mapView.addGestureRecognizer(self.setPinTapGestureRecognizer)
         
         myLocationButton = UIButton(type: .custom)
-        myLocationButton.setImage(#imageLiteral(resourceName: "myLocation"), for: .normal)
+        myLocationButton.setImage(R.image.myLocation(), for: .normal)
         myLocationButton.addTarget(self, action: #selector(myLocationPressed(_:)), for: .touchUpInside)
         mapView.addSubview(myLocationButton)
         
         confirmButton = UIButton.confirmGreenButton()
-        confirmButton.setTitle("Confirm".localized, for: .normal)
+        confirmButton.setTitle(R.string.localizable.confirm(), for: .normal)
         confirmButton.addTarget(self, action: #selector(confirmAddressPressed(_:)), for: .touchUpInside)
         mapView.addSubview(confirmButton)
         
@@ -171,7 +171,7 @@ extension AddressesMapViewController {
         resultSearchController = UISearchController(searchResultsController: locationSearchTable)
         resultSearchController?.searchResultsUpdater = locationSearchTable
         resultSearchController?.hidesNavigationBarDuringPresentation = false
-        resultSearchController?.searchBar.placeholder = "SearchPlaceholder".localized
+        resultSearchController?.searchBar.placeholder = R.string.localizable.searchPlaceholder()
         resultSearchController?.searchBar.tintColor = UIColor.white
         resultSearchController?.searchBar.barTintColor = UIColor.white
         resultSearchController?.searchBar.delegate = self
@@ -234,7 +234,7 @@ extension AddressesMapViewController {
             }
             strongSelf.setLoading(false)
             if let error = error {
-                strongSelf.showErrorAlert(title: "Error".localized, message: error.localizedDescription)
+                strongSelf.showErrorAlert(title: R.string.localizable.error(), message: error.localizedDescription)
                 return
             }
             if let address = address {
@@ -308,7 +308,7 @@ extension AddressesMapViewController : CLLocationManagerDelegate {
     }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-        self.showErrorAlert(title: "Error".localized, message: error.localizedDescription)
+        self.showErrorAlert(title: R.string.localizable.error(), message: error.localizedDescription)
     }
 }
 
@@ -318,7 +318,7 @@ extension AddressesMapViewController : MKMapViewDelegate {
         if annotation.isEqual(addressAnnotation) {
             let annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: "AddressAnnotationPin")
             annotationView.canShowCallout = true
-            annotationView.image = #imageLiteral(resourceName: "pin")
+            annotationView.image = R.image.pin()
             
             return annotationView
         }
@@ -345,16 +345,16 @@ extension AddressesMapViewController : AddressFieldsDelegate {
     func save(model: AddressResponseModel) {
         AddressManager.shared.save(with: model) { (success) in
             if success {
-                self.showAlertController(title: "Success".localized, message: "AddressSavedSuccess".localized, action: .default) {
+                self.showAlertController(title: R.string.localizable.success(), message: R.string.localizable.addressSavedSuccess(), action: .default) {
                     self.expandMapView()
                 }
             } else {
-                self.showErrorAlert(title: "Error".localized, message: "AddressSavedError".localized)
+                self.showErrorAlert(title: R.string.localizable.error(), message: R.string.localizable.addressSavedError())
             }
         }
     }
     
     func showError(message: String) {
-        self.showErrorAlert(title: "Error".localized, message: message)
+        self.showErrorAlert(title: R.string.localizable.error(), message: message)
     }
 }

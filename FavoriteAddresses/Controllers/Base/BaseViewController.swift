@@ -88,7 +88,7 @@ extension BaseViewController {
 extension BaseViewController {
     func showAlertController(title: String?, message: String?, action style: UIAlertActionStyle, with completion: (() -> Void)?) {
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        let alertAction = UIAlertAction(title: "OK".localized, style: style) { (action) in
+        let alertAction = UIAlertAction(title: R.string.localizable.oK(), style: style) { (action) in
             if let completion = completion {
                 completion()
             }

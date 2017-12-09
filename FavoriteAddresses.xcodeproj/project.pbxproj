@@ -49,6 +49,7 @@
 		CBE6A3761FD6D72B0084A481 /* BaseNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE6A3751FD6D72B0084A481 /* BaseNavigationController.swift */; };
 		CBE6A3791FD6D87A0084A481 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = CBE6A3781FD6D87A0084A481 /* Localizable.strings */; };
 		CBE6A37C1FD6D8FB0084A481 /* String+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE6A37B1FD6D8FB0084A481 /* String+Helpers.swift */; };
+		CBF643871FDBF3830049C662 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBF643861FDBF3830049C662 /* R.generated.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -85,6 +86,7 @@
 		CBE6A3751FD6D72B0084A481 /* BaseNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseNavigationController.swift; sourceTree = "<group>"; };
 		CBE6A3781FD6D87A0084A481 /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		CBE6A37B1FD6D8FB0084A481 /* String+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Helpers.swift"; sourceTree = "<group>"; };
+		CBF643861FDBF3830049C662 /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = SOURCE_ROOT; };
 		FC354F87A4F9B30578B6F14F /* Pods-FavoriteAddresses.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FavoriteAddresses.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FavoriteAddresses/Pods-FavoriteAddresses.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -278,6 +280,7 @@
 		CBE6A3771FD6D84A0084A481 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				CBF643861FDBF3830049C662 /* R.generated.swift */,
 				CBE6A3781FD6D87A0084A481 /* Localizable.strings */,
 			);
 			path = Resources;
@@ -300,6 +303,7 @@
 			buildConfigurationList = CBE6A35E1FD6C8D90084A481 /* Build configuration list for PBXNativeTarget "FavoriteAddresses" */;
 			buildPhases = (
 				650748F63B43226C509F3BD6 /* [CP] Check Pods Manifest.lock */,
+				CBF643851FDBF2FE0049C662 /* ShellScript */,
 				CBE6A3451FD6C8D90084A481 /* Sources */,
 				CBE6A3461FD6C8D90084A481 /* Frameworks */,
 				CBE6A3471FD6C8D90084A481 /* Resources */,
@@ -414,6 +418,7 @@
 				"${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/MagicalRecord/MagicalRecord.framework",
 				"${BUILT_PRODUCTS_DIR}/PhoneNumberKit/PhoneNumberKit.framework",
+				"${BUILT_PRODUCTS_DIR}/R.swift.Library/Rswift.framework",
 				"${BUILT_PRODUCTS_DIR}/SearchTextField/SearchTextField.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -423,6 +428,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManagerSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MagicalRecord.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PhoneNumberKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Rswift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SearchTextField.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -443,6 +449,19 @@
 			shellPath = /bin/sh;
 			shellScript = "cd FavoriteAddresses\nmogenerator --model \"FavoriteAddresses.xcdatamodeld/FavoriteAddresses.xcdatamodel\" --template-var arc=true  -M Model/Private -H Model/Public --swift";
 		};
+		CBF643851FDBF2FE0049C662 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"$PODS_ROOT/R.swift/rswift\" generate \"$SRCROOT\"";
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -452,6 +471,7 @@
 			files = (
 				CBE6A3731FD6CE0D0084A481 /* UIColor+FavoritesAddresses.swift in Sources */,
 				CBB28B241FD93C1800F162D2 /* LoaderView.swift in Sources */,
+				CBF643871FDBF3830049C662 /* R.generated.swift in Sources */,
 				CBA2BF481FDAC0C600F3EEE4 /* APIProvider+Area.swift in Sources */,
 				CB394DCD1FD84FB20081C53B /* APIRouter.swift in Sources */,
 				CB394DBF1FD849C20081C53B /* _Address.swift in Sources */,

@@ -29,13 +29,13 @@ class StartViewController: BaseViewController {
 extension StartViewController {
     func setupUI() {
         let newAddressButton = UIButton(type: .system)
-        newAddressButton.setTitle("AddAddress".localized, for: .normal)
+        newAddressButton.setTitle(R.string.localizable.addAddress(), for: .normal)
         newAddressButton.setTitleColor(UIColor.blue, for: .normal)
         newAddressButton.addTarget(self, action: #selector(addAddressPressed(_:)), for: .touchUpInside)
         self.view.addSubview(newAddressButton)
         
         savedAddressesButton = UIButton(type: .system)
-        savedAddressesButton.setTitle("ShowSavedAddresses".localized, for: .normal)
+        savedAddressesButton.setTitle(R.string.localizable.showSavedAddresses(), for: .normal)
         savedAddressesButton.setTitleColor(UIColor.blue, for: .normal)
         savedAddressesButton.setTitleColor(UIColor.blue.withAlphaComponent(0.6), for: .disabled)
         savedAddressesButton.addTarget(self, action: #selector(showSavedAddresses(_:)), for: .touchUpInside)

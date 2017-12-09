@@ -9,10 +9,6 @@
 import Foundation
 
 extension String {
-    var localized: String {
-        return NSLocalizedString(self, tableName: nil, bundle: Bundle.main, value: "", comment: "")
-    }
-    
     var isTrimmedEmpty: Bool {
         return self.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines).isEmpty
     }

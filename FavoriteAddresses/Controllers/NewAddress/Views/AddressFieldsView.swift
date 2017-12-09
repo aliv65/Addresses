@@ -24,32 +24,32 @@ enum AddressFields: String {
     var placeholder: String {
         switch self {
         case .name:
-            return "NamePlaceholder".localized
+            return R.string.localizable.namePlaceholder()
         case .area:
-            return "AreaPlaceholder".localized
+            return R.string.localizable.areaPlaceholder()
         case .apartment:
-            return "ApartmentPlaceholder".localized
+            return R.string.localizable.apartmentPlaceholder()
         case .block:
-            return "BlockPlaceholder".localized
+            return R.string.localizable.blockPlaceholder()
         case .street:
-            return "StreetPlaceholder".localized
+            return R.string.localizable.streetPlaceholder()
         case .building:
-            return "BuildingPlaceholder".localized
+            return R.string.localizable.buildingPlaceholder()
         case .floor:
-            return "FloorPlaceholder".localized
+            return R.string.localizable.floorPlaceholder()
         case .apartmentNo:
-            return "ApartmentNoPlaceholder".localized
+            return R.string.localizable.apartmentNoPlaceholder()
         case .phone:
-            return "PhonePlaceholder".localized
+            return R.string.localizable.phonePlaceholder()
         case .special:
-            return "SpecialPlaceholder".localized
+            return R.string.localizable.specialPlaceholder()
         }
     }
     
     var title: String? {
         switch self {
         case .name:
-            return "NameTitle".localized
+            return R.string.localizable.nameTitle()
         default:
             return nil
         }
@@ -98,7 +98,7 @@ class AddressFieldsView: UIView {
     
     func save() {
         guard validateFields() else {
-            self.delegate?.showError(message: "MissedRequiredFields".localized)
+            self.delegate?.showError(message: R.string.localizable.missedRequiredFields())
             return
         }
         let addressResponseModel = AddressResponseModel(with: savedDataFields)
@@ -171,7 +171,7 @@ extension AddressFieldsView: UITableViewDelegate {
         view.backgroundColor = UIColor.tableFooterColor
         
         let savedButton = UIButton.confirmGreenButton()
-        savedButton.setTitle("Save".localized, for: .normal)
+        savedButton.setTitle(R.string.localizable.save(), for: .normal)
         savedButton.addTarget(self, action: #selector(saveAddressPressed(_:)), for: .touchUpInside)
         view.addSubview(savedButton)
         

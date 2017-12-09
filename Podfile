@@ -11,5 +11,6 @@ target 'FavoriteAddresses' do
   pod 'PhoneNumberKit'
   pod 'SearchTextField'
   pod 'IQKeyboardManagerSwift'
+  pod 'R.swift'
 
 end
